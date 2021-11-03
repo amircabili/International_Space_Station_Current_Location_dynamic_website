@@ -19,17 +19,17 @@ export class PopUpComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<any>,
     public iSSService: ISSService,
-     
+
   ) { }
 
   ngOnInit(): void {
-    
+
     if (!this.data){
-      this.location = this.getlocationEmpty();   
+      this.location = this.getlocationEmpty();
     } else{
-      this.location = this.data;  
-      this.dataLatitude  = this.location.latitude; 
-      this.dataLongitude  = this.location.longitude;  
+      this.location = this.data;
+      this.dataLatitude  = this.location.latitude;
+      this.dataLongitude  = this.location.longitude;
     }
 
   }
@@ -52,22 +52,23 @@ export class PopUpComponent implements OnInit {
 
   getlocationEmpty(){
     return{
-      latitude: "", 
-      longitude: ""
+      latitude: "",
+      longitude: "",
+      dateCreated: this.getDateToday()
     };
   }
 
   CreateLocation(dataLatitudeVal: any,dataLongitudeVal: any){
     this.newObj = {
-      "latitude":  dataLatitudeVal, 
-      "longitude": dataLongitudeVal
-    }; 
+      "latitude":  dataLatitudeVal,
+      "longitude": dataLongitudeVal,
+      "dateCreated": this.getDateToday(),
+    };
 
     if (dataLatitudeVal && dataLongitudeVal){
-      this.iSSService.addlocation(this.newObj);
+      this.iSSService.addlocation(this.newObj).then();
       this.errorField = false;
       this.dialogRef.close();
-      // location.reload();
     } else{
        this.errorField = true;
     }
@@ -75,4 +76,4 @@ export class PopUpComponent implements OnInit {
 
 
   }
- 
+

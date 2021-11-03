@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ISSService {
- 
+
   public globalData:Observable<any>;
 
   private _issURL = 'http://api.open-notify.org/iss-now.json';
@@ -17,40 +17,38 @@ export class ISSService {
 
   private _createLocationInnodeJS_Api = 'http:// ';
 
-   
-   
-  
+
+
+
   constructor(
     private http: HttpClient,
-  ) { 
-   
+  ) {
+
       this.globalData = new Observable(observer => {
-        let obj : any[] = [];          
+        let obj : any[] = [];
                 setInterval(() =>
-                          { 
+                          {
                       this.http.get<any>(this._issURL)
-                      .subscribe(resp=>{                                                      
+                      .subscribe(resp=>{
                             obj = resp
-                            observer.next(obj);                                                     
-                      }) 
-                  },400)                            
+                            observer.next(obj);
+                      })
+                  },400)
         });
 
    }
- 
+
 
     registerNotesData(){
       return this.globalData;
     }
-    
+
     async addlocation(newObj: any){
         const fetchParams = {
           method : 'POST',
           body : JSON.stringify(newObj),
           headers : {'Content-Type' : 'application/json'}
         };
-    
-
 
       ///////////    this  will call an node-JS api server that i will build !! ////////////////////****** */
 
@@ -60,7 +58,7 @@ export class ISSService {
 
 
     }
-    
+
 
 
 }
