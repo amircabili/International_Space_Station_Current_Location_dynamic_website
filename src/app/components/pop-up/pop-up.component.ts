@@ -13,6 +13,7 @@ export class PopUpComponent implements OnInit {
   public errorField = false;
   public  dataLatitude: any;
   public dataLongitude: any;
+  public dataDateCreated: any;
   public newObj: any;
 
   constructor(
@@ -30,6 +31,7 @@ export class PopUpComponent implements OnInit {
       this.location = this.data;
       this.dataLatitude  = this.location.latitude;
       this.dataLongitude  = this.location.longitude;
+      this.dataDateCreated  = this.location.dateCreated;
     }
 
   }

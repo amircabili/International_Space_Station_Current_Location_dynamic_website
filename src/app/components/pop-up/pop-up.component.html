@@ -14,7 +14,7 @@
       <div class="noteWrapper"  >
         <div class="row"  >
           <div class="col-md-8 col-sm-12 text-left mx-auto">
-            
+
             <div class="col-sm-12 col-xs-12"><h2 class="card-title m-0">Please Update Latitude Coordinates:</h2>
                 <mat-form-field [ngClass]="errorField ? 'error' : ''">
                   <mat-label>  </mat-label>
@@ -33,7 +33,7 @@
                   </div>
                 </mat-form-field>
               </div>
-            
+
             <hr>
 
             <div class="col-sm-12 col-xs-12"><h2 class="card-title m-0">Please Update Longtitude Coordinates:</h2>
@@ -54,25 +54,43 @@
                   </div>
                 </mat-form-field>
               </div>
-  
-  
+
+            <div class="col-sm-12 col-xs-12"><h4 class="card-title m-0">Date Created:</h4>
+              <mat-form-field [ngClass]="errorField ? 'error' : ''">
+                <mat-label>  </mat-label>
+                <input matInput required disabled
+                       [(ngModel)]="dataDateCreated"
+                       placeholder="{{data.dateCreated}}"
+                       type="text"
+                       #dateCreated
+                       maxlength="30"
+                       autcomplete="false"
+                       class="text-left"
+                       alt="{{data.longitude}}"
+                       value="">
+                <div class="errorField" *ngIf="!dateCreated.value && errorField">
+                  <span> Please Fill Input </span>
+                </div>
+              </mat-form-field>
+            </div>
+
+
             <!--   this is to prevent chrome to upload save password pop up -->
             <input type="password" autocomplete="new-password" class="sr-only d-none"/>
             <!--    this is to prevent chrome to upload save password pop up -->
-  
-  
+
+
             <div class="row mt-4 mx-auto">
               <div class="col-sm-5 col-xs-12"  >
                 <button class="btn popUpButton px-4" (click)="CreateLocation(dataLatitude,dataLongitude)"  >  Create Location  </button>
               </div>
-              
+
             </div>
-  
+
           </div>
         </div>
       </div>
     </div>
-  
-  
+
+
   </div>
-  
