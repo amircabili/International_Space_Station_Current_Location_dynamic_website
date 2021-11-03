@@ -1,0 +1,78 @@
+<div class="PopupComponent">
+    <div class="modalHeader">
+      <div class="row m-0  ">
+        <div class="col-sm-1 col-xs-1">
+          <div class="exitButtonWrapper">
+            <button alt=""  class="exitButton pull-left"
+                    (click)="finishFunction()">x
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modalContent">
+      <div class="noteWrapper"  >
+        <div class="row"  >
+          <div class="col-md-8 col-sm-12 text-left mx-auto">
+            
+            <div class="col-sm-12 col-xs-12"><h2 class="card-title m-0">Please Update Latitude Coordinates:</h2>
+                <mat-form-field [ngClass]="errorField ? 'error' : ''">
+                  <mat-label>  </mat-label>
+                  <input matInput required
+                         [(ngModel)]="dataLatitude"
+                         placeholder="{{data.latitude}}"
+                         type="text"
+                         #latitude
+                         maxlength="30"
+                         autcomplete="false"
+                         class="text-left"
+                         alt="{{data.latitude}}"
+                         value="">
+                  <div class="errorField" *ngIf="!latitude.value && errorField">
+                    <span> Please Fill Input </span>
+                  </div>
+                </mat-form-field>
+              </div>
+            
+            <hr>
+
+            <div class="col-sm-12 col-xs-12"><h2 class="card-title m-0">Please Update Longtitude Coordinates:</h2>
+                <mat-form-field [ngClass]="errorField ? 'error' : ''">
+                  <mat-label>  </mat-label>
+                  <input matInput required
+                         [(ngModel)]="dataLongitude"
+                         placeholder="{{data.longitude}}"
+                         type="text"
+                         #longitude
+                         maxlength="30"
+                         autcomplete="false"
+                         class="text-left"
+                         alt="{{data.longitude}}"
+                         value="">
+                  <div class="errorField" *ngIf="!longitude.value && errorField">
+                    <span> Please Fill Input </span>
+                  </div>
+                </mat-form-field>
+              </div>
+  
+  
+            <!--   this is to prevent chrome to upload save password pop up -->
+            <input type="password" autocomplete="new-password" class="sr-only d-none"/>
+            <!--    this is to prevent chrome to upload save password pop up -->
+  
+  
+            <div class="row mt-4 mx-auto">
+              <div class="col-sm-5 col-xs-12"  >
+                <button class="btn popUpButton px-4" (click)="CreateLocation(dataLatitude,dataLongitude)"  >  Create Location  </button>
+              </div>
+              
+            </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  </div>
+  
